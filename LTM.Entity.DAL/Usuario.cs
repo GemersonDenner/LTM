@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace LTM.Entity.API
+namespace LTM.Entity.DAL
 {
     public class Usuario
     {
@@ -16,5 +16,10 @@ namespace LTM.Entity.API
 
 		public string Email { get; set; }
 
+
+		public Usuario()
+		{
+			this.Id = Guid.NewGuid();
+		}
 	}
 }

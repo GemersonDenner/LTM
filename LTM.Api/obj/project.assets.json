@@ -13124,11 +13124,11 @@
       "hideWarningsAndErrors": true
     },
     "restore": {
-      "projectUniqueName": "C:\\Users\\Denner\\Documents\\GitHub\\LTM\\LTM\\LTM.Api\\LTM.Api.csproj",
+      "projectUniqueName": "C:\\Users\\Denner\\Documents\\GitHub\\LTM\\LTM.Api\\LTM.Api.csproj",
       "projectName": "LTM.Api",
-      "projectPath": "C:\\Users\\Denner\\Documents\\GitHub\\LTM\\LTM\\LTM.Api\\LTM.Api.csproj",
+      "projectPath": "C:\\Users\\Denner\\Documents\\GitHub\\LTM\\LTM.Api\\LTM.Api.csproj",
       "packagesPath": "C:\\Users\\Denner\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Denner\\Documents\\GitHub\\LTM\\LTM\\LTM.Api\\obj\\",
+      "outputPath": "C:\\Users\\Denner\\Documents\\GitHub\\LTM\\LTM.Api\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

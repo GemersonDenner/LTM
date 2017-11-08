@@ -3,13 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.26730.16
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LTM.Api", "LTM.Api\LTM.Api.csproj", "{C9C2DFEC-F96A-46D0-983D-874C3D15B3CB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LTM.Api", "LTM.Api\LTM.Api.csproj", "{C9C2DFEC-F96A-46D0-983D-874C3D15B3CB}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "01 - API", "01 - API", "{FE0D20EB-8019-4452-86AB-15D08FB4D4C9}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "02 - Entity API", "02 - Entity API", "{8415C1EB-6B41-44E3-B0EA-DCC590432F11}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "02 - Entity DAL", "02 - Entity DAL", "{8415C1EB-6B41-44E3-B0EA-DCC590432F11}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LTM.Entity.API", "LTM.Entity.API\LTM.Entity.API.csproj", "{60EF2FFB-2F1F-49A7-9227-20B79A8B76B3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LTM.Entity.DAL", "LTM.Entity.DAL\LTM.Entity.DAL.csproj", "{60EF2FFB-2F1F-49A7-9227-20B79A8B76B3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

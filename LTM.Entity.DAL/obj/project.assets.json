@@ -673,11 +673,11 @@
       "hideWarningsAndErrors": true
     },
     "restore": {
-      "projectUniqueName": "C:\\Users\\Denner\\Documents\\GitHub\\LTM\\LTM\\LTM.Entity.API\\LTM.Entity.API.csproj",
-      "projectName": "LTM.Entity.API",
-      "projectPath": "C:\\Users\\Denner\\Documents\\GitHub\\LTM\\LTM\\LTM.Entity.API\\LTM.Entity.API.csproj",
+      "projectUniqueName": "C:\\Users\\Denner\\Documents\\GitHub\\LTM\\LTM.Entity.DAL\\LTM.Entity.DAL.csproj",
+      "projectName": "LTM.Entity.DAL",
+      "projectPath": "C:\\Users\\Denner\\Documents\\GitHub\\LTM\\LTM.Entity.DAL\\LTM.Entity.DAL.csproj",
       "packagesPath": "C:\\Users\\Denner\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Denner\\Documents\\GitHub\\LTM\\LTM\\LTM.Entity.API\\obj\\",
+      "outputPath": "C:\\Users\\Denner\\Documents\\GitHub\\LTM\\LTM.Entity.DAL\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
