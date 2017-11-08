@@ -1,0 +1,11 @@
+C:\Users\Denner\Documents\GitHub\LTM\LTM\LTM.Api\bin\Debug\netcoreapp2.0\LTM.Api.deps.json
+C:\Users\Denner\Documents\GitHub\LTM\LTM\LTM.Api\bin\Debug\netcoreapp2.0\LTM.Api.runtimeconfig.json
+C:\Users\Denner\Documents\GitHub\LTM\LTM\LTM.Api\bin\Debug\netcoreapp2.0\LTM.Api.runtimeconfig.dev.json
+C:\Users\Denner\Documents\GitHub\LTM\LTM\LTM.Api\bin\Debug\netcoreapp2.0\LTM.Api.dll
+C:\Users\Denner\Documents\GitHub\LTM\LTM\LTM.Api\bin\Debug\netcoreapp2.0\LTM.Api.pdb
+C:\Users\Denner\Documents\GitHub\LTM\LTM\LTM.Api\obj\Debug\netcoreapp2.0\LTM.Api.csprojResolveAssemblyReference.cache
+C:\Users\Denner\Documents\GitHub\LTM\LTM\LTM.Api\obj\Debug\netcoreapp2.0\LTM.Api.csproj.CoreCompileInputs.cache
+C:\Users\Denner\Documents\GitHub\LTM\LTM\LTM.Api\obj\Debug\netcoreapp2.0\LTM.Api.AssemblyInfoInputs.cache
+C:\Users\Denner\Documents\GitHub\LTM\LTM\LTM.Api\obj\Debug\netcoreapp2.0\LTM.Api.AssemblyInfo.cs
+C:\Users\Denner\Documents\GitHub\LTM\LTM\LTM.Api\obj\Debug\netcoreapp2.0\LTM.Api.dll
+C:\Users\Denner\Documents\GitHub\LTM\LTM\LTM.Api\obj\Debug\netcoreapp2.0\LTM.Api.pdb
