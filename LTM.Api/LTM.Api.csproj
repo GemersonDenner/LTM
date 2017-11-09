@@ -20,6 +20,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\LTM.DAL\LTM.DAL.csproj" />
     <ProjectReference Include="..\LTM.Entity.API\LTM.Entity.API.csproj" />
     <ProjectReference Include="..\LTM.Entity.DAL\LTM.Entity.DAL.csproj" />
   </ItemGroup>

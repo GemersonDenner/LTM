@@ -15,6 +15,7 @@ namespace LTM.Api.Mapper
 			CreateMap<Entity.DAL.Produto, Entity.API.Produto>();
 			CreateMap<Entity.API.ProdutoAdicionar, Entity.DAL.Produto>();
 			CreateMap<Entity.API.UsuarioCriacao, Entity.DAL.Usuario>();
+			CreateMap<Entity.API.UsuarioAlteracao, Entity.DAL.Usuario>();
 		}
 	}
 }
