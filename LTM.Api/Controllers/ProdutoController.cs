@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using LTM.Entity.DAL;
+using AutoMapper;
 
 namespace LTM.Api.Controllers
 {
@@ -12,14 +13,20 @@ namespace LTM.Api.Controllers
     [Route("api/Produto")]
     public class ProdutoController : Controller
     {
+		private IMapper _mapper;
+		public ProdutoController(IMapper mapper)
+		{
+			_mapper = mapper;
+		}
+
 		[HttpGet("BuscarTodos/")]
-		public IEnumerable<Produto> BuscarTodos()
+		public IEnumerable<Entity.API.Produto> BuscarTodos()
 		{
 			return null;
 		}
 
 		[HttpGet("BuscarTodos/{idProduto}")]
-		public Produto Buscar(Guid idProduto)
+		public Entity.API.Produto Buscar(Guid idProduto)
 		{
 			return null;
 		}
@@ -31,12 +38,12 @@ namespace LTM.Api.Controllers
 		}
 
 		[HttpPost("Atualizar/")]
-		public void Atualizar([FromBody]Produto produto)
+		public void Atualizar([FromBody]Entity.API.Produto produto)
 		{
 
 		}
 		[HttpPost("Cadastrar/")]
-		public void Cadastrar([FromBody]Produto produto)
+		public void Cadastrar([FromBody]Entity.API.ProdutoAdicionar produto)
 		{
 
 		}

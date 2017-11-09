@@ -9,6 +9,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Swashbuckle.AspNetCore.Swagger;
+using LTM.Api.Mapper;
 
 namespace LTM.Api
 {
@@ -30,6 +31,15 @@ namespace LTM.Api
 			{
 				c.SwaggerDoc("v1", new Info { Title = "API LTM" });
 			});
+
+			var config = new AutoMapper.MapperConfiguration(
+				c =>
+				{
+					c.AddProfile(new ConfigMapper());
+				});
+
+			var mapper = config.CreateMapper();
+			services.AddSingleton(mapper);
 		}
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
