@@ -1,0 +1,5 @@
+C:\Users\Denner\Documents\GitHub\LTM\LTM.Api
+--output-path=obj\Release\netcoreapp2.0\
+--application-name=LTM.Api
+--content-root=C:\Users\Denner\Documents\GitHub\LTM\LTM.Api
+--file=
