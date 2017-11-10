@@ -1,0 +1,64 @@
+﻿@page
+@model InicioModel
+@{
+}
+<nav class="navbar navbar-expand-md navbar-dark bg-dark mb-4">
+	@if(Model.UsuarioLogado){<label class="navbar-brand">Nome Usuário</label>}
+	
+	<div class="collapse navbar-collapse" id="navbarCollapse">
+		<ul class="navbar-nav mr-auto">
+			<li class="nav-item active">
+				<a class="nav-link" href="#">Login</a>
+			</li>
+			<li class="nav-item active">
+				<a class="nav-link" href="#">Cadastro</a>
+			</li>
+		</ul>
+	</div>
+</nav>
+
+<main role="main" class="container">
+	<form method="post">
+		<section class="jumbotron text-center">
+			<div class="container col-md-4">
+				<h2 class="form-signin-heading">Dados de Login</h2>
+				<input type="text" id="inputLogin" asp-for="EfetuarLogin.Login" class="form-control margin10" placeholder="Login" required="" autofocus="">
+				<input type="password" asp-for="EfetuarLogin.Senha" id="inputPassword" class="form-control margin10" placeholder="Senha" required="">
+				<button class="btn btn-lg btn-primary btn-block margin10" asp-page-handler="Login" type="submit">Login</button>
+			</div>
+		</section>
+	</form>
+
+
+
+	<section class="jumbotron text-center">
+		<div class="container col-md-4">
+			<h2 class="form-signin-heading">Dados para Cadastro</h2>
+			<input type="text" id="inputCadastroNome" asp-for="EfetuarCadastro.Nome" class="form-control margin10" placeholder="Nome" required="" autofocus="">
+			<input type="email" id="inputCadastroEmail" asp-for="EfetuarCadastro.Email" class="form-control margin10" placeholder="Email" required="" autofocus="">
+			<input type="text" id="inputCadastroLogin" asp-for="EfetuarCadastro.Login" class="form-control margin10" placeholder="Login" required="" autofocus="">
+			<input type="password" id="inputCadastroPassword" asp-for="EfetuarCadastro.Senha" class="form-control margin10" placeholder="Senha" required="">
+			<button class="btn btn-lg btn-primary btn-block margin10" asp-page-handler="Cadastrar" type="submit">Cadastrar</button>
+
+		</div>
+	</section>
+
+
+
+	<div class="jumbotron">
+		<h1>Navbar example</h1>
+		<div class="container">
+
+			<div class="row">
+				@foreach (var item in Model.produtos)
+				{
+					<div class="card">
+						<p>@item.Nome</p>
+						<p>@item.Descricao</p>
+					</div>
+				}
+			</div>
+
+		</div>
+	</div>
+</main>
