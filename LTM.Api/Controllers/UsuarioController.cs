@@ -23,7 +23,7 @@ namespace LTM.Api.Controllers
 			_mapper = mapper;
 		}
 
-	[HttpGet("Buscar/{login}/{password}")]
+		[HttpGet("Buscar/{login}/{password}")]
 		public Entity.API.LoginResponse Buscar(string login, string password)
 		{
 			var usr = _UsuarioRepository.Buscar(login, password);

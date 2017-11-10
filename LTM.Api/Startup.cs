@@ -42,8 +42,11 @@ namespace LTM.Api
 			services.AddSingleton(mapper);
 
 			var context = new LTM.DAL.Context.MongoContext(Configuration.GetConnectionString("DefaultConnection"), Configuration.GetSection("DataBase").GetValue<string>("DbName"));
-			var rep = new DAL.Repository.MongoProdutoRepository(context);
-			services.AddSingleton<DAL.Repository.IProdutoRepository>(rep);
+			var repProduto = new DAL.Repository.MongoProdutoRepository(context);
+			services.AddSingleton<DAL.Repository.IProdutoRepository>(repProduto);
+
+			var repUsuario = new DAL.Repository.MongoUsuarioRepository(context);
+			services.AddSingleton<DAL.Repository.IUsuarioRepository>(repUsuario);
 		}
 
 		// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

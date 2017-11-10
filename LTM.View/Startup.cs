@@ -22,6 +22,9 @@ namespace LTM.View
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
+			var enderecoAPI = Configuration.GetSection("Configuracoes").GetValue<string>("EnderecoAPI");
+			var ConnAPI = new Classes.ConexaoAPI(enderecoAPI);
+			services.AddSingleton<Classes.ConexaoAPI>(ConnAPI);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

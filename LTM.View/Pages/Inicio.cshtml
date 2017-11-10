@@ -2,23 +2,61 @@
 @model InicioModel
 @{
 }
+<script type="text/javascript">
+	function ShowLogin() {
+		$("#frmLogin").show();
+		HiddenCadastrar();
+	}
+
+	function ShowCadastrar() {
+		$("#frmCadastrar").show();
+		HiddenLogin();
+	}
+
+	function HiddenLogin() {
+		$("#frmLogin").hide();
+	}
+
+	function HiddenCadastrar() {
+		$("#frmCadastrar").hide();
+	}
+
+	function ShowCadastrarProduto() {
+		$("#frmCadastrarProduto").show();
+
+		$("#inputCadastroProdutoNome").val("");
+		$("#inputCadastroProdutoDescricao").val("");
+		$("#inputCadastroProdutoEspecificacoes").val("");
+		$("#inputCadastroProdutoItensEstoque").val("");
+	}
+</script>
 <nav class="navbar navbar-expand-md navbar-dark bg-dark mb-4">
-	@if(Model.UsuarioLogado){<label class="navbar-brand">Nome Usuário</label>}
-	
-	<div class="collapse navbar-collapse" id="navbarCollapse">
+	@if (Model.UsuarioLogado)
+	{
+		<label class="navbar-brand">@Model.DadosLogin.Nome</label>
 		<ul class="navbar-nav mr-auto">
 			<li class="nav-item active">
-				<a class="nav-link" href="#">Login</a>
-			</li>
-			<li class="nav-item active">
-				<a class="nav-link" href="#">Cadastro</a>
+				<a class="btn btn-outline-success my-2 my-sm-0 nav-link " onclick="ShowCadastrarProduto()">Cadastrar Produto</a>
 			</li>
 		</ul>
-	</div>
+	}
+	else
+	{
+		<div class="collapse navbar-collapse" id="navbarCollapse">
+			<ul class="navbar-nav mr-auto">
+				<li class="nav-item active">
+					<a class="nav-link" onclick="ShowLogin()">Login</a>
+				</li>
+				<li class="nav-item active">
+					<a class="nav-link" onclick="ShowCadastrar()">Cadastro</a>
+				</li>
+			</ul>
+		</div>
+	}
 </nav>
 
 <main role="main" class="container">
-	<form method="post">
+	<form id="frmLogin" style="display:none" method="post">
 		<section class="jumbotron text-center">
 			<div class="container col-md-4">
 				<h2 class="form-signin-heading">Dados de Login</h2>
@@ -30,35 +68,61 @@
 	</form>
 
 
-
-	<section class="jumbotron text-center">
-		<div class="container col-md-4">
-			<h2 class="form-signin-heading">Dados para Cadastro</h2>
-			<input type="text" id="inputCadastroNome" asp-for="EfetuarCadastro.Nome" class="form-control margin10" placeholder="Nome" required="" autofocus="">
-			<input type="email" id="inputCadastroEmail" asp-for="EfetuarCadastro.Email" class="form-control margin10" placeholder="Email" required="" autofocus="">
-			<input type="text" id="inputCadastroLogin" asp-for="EfetuarCadastro.Login" class="form-control margin10" placeholder="Login" required="" autofocus="">
-			<input type="password" id="inputCadastroPassword" asp-for="EfetuarCadastro.Senha" class="form-control margin10" placeholder="Senha" required="">
-			<button class="btn btn-lg btn-primary btn-block margin10" asp-page-handler="Cadastrar" type="submit">Cadastrar</button>
-
-		</div>
-	</section>
-
-
-
-	<div class="jumbotron">
-		<h1>Navbar example</h1>
-		<div class="container">
-
-			<div class="row">
-				@foreach (var item in Model.produtos)
-				{
-					<div class="card">
-						<p>@item.Nome</p>
-						<p>@item.Descricao</p>
-					</div>
-				}
+	<form id="frmCadastrar" style="display:none" method="post">
+		<section class="jumbotron text-center">
+			<div class="container col-md-4">
+				<h2 class="form-signin-heading">Dados para Cadastro</h2>
+				<input type="text" id="inputCadastroNome" asp-for="EfetuarCadastro.Nome" class="form-control margin10" placeholder="Nome" required="" autofocus="">
+				<input type="email" id="inputCadastroEmail" asp-for="EfetuarCadastro.Email" class="form-control margin10" placeholder="Email" required="" autofocus="">
+				<input type="text" id="inputCadastroLogin" asp-for="EfetuarCadastro.Login" class="form-control margin10" placeholder="Login" required="" autofocus="">
+				<input type="password" id="inputCadastroPassword" asp-for="EfetuarCadastro.Senha" class="form-control margin10" placeholder="Senha" required="">
+				<button class="btn btn-lg btn-primary btn-block margin10" asp-page-handler="Cadastrar" type="submit">Cadastrar</button>
 			</div>
+		</section>
+	</form>
+	@if (Model.UsuarioLogado)
+	{
+		<form id="frmCadastrarProduto" style="display:none" asp-antiforgery="true" method="post">
+			<section class="jumbotron text-center">
+				<div class="container col-md-4">
+					<h2 class="form-signin-heading">Dados para Cadastro de Produto</h2>
+					<input type="text" id="inputCadastroProdutoNome" asp-for="CadastrarProduto.Nome" class="form-control margin10" placeholder="Nome" required="" autofocus="">
+					<input type="text" id="inputCadastroProdutoDescricao" asp-for="CadastrarProduto.Descricao" class="form-control margin10" placeholder="Descricao" required="" autofocus="">
+					<input type="text" id="inputCadastroProdutoEspecificacoes" asp-for="CadastrarProduto.Especificacoes" class="form-control margin10" placeholder="Especificacoes" required="" autofocus="">
+					<input type="number" id="inputCadastroProdutoItensEstoque" asp-for="CadastrarProduto.ItensEstoque" class="form-control margin10" placeholder="ItensEstoque" required="">
+					<button class="btn btn-lg btn-primary btn-block margin10" asp-page-handler="CadastrarProduto" type="submit">Cadastrar Produto</button>
+					<input type="hidden" id="dadosLogin1" asp-for="DadosLogin.Id" />
+					<input type="hidden" id="dadosLogin2" asp-for="DadosLogin.Login" />
+					<input type="hidden" id="dadosLogin3" asp-for="DadosLogin.Nome" />
+					<input type="hidden" id="dadosLogin4" asp-for="DadosLogin.ChaveJwt" />
+					<input type="hidden" id="dadosLogin5" asp-for="DadosLogin.Email" />
+					<input type="hidden" id="dadosLogin6" asp-for="UsuarioLogado" />
+				</div>
+			</section>
+		</form>
 
-		</div>
-	</div>
+		@if (Model.produtos != null)
+		{
+			<form>
+				<div class="jumbotron">
+					<div class="container">
+						<div class="row">
+							@foreach (var item in Model.produtos)
+							{
+								<div class="card col-md-5" style="margin:5px">
+									Nome: @item.Nome
+									<br />
+									Descrição: @item.Descricao
+									<br />
+									Especificações: @item.Especificacao
+									<br />
+									Estoque: @item.QuantidadeEstoque
+								</div>
+							}
+						</div>
+					</div>
+				</div>
+			</form>
+		}
+	}
 </main>

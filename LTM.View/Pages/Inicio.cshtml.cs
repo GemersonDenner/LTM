@@ -14,7 +14,17 @@ namespace LTM.View.Pages
 {
 	public class InicioModel : PageModel
 	{
+		private Classes.ConexaoAPI _conexaoAPI;
+
+		public InicioModel(Classes.ConexaoAPI conexaoAPI)
+		{
+			_conexaoAPI = conexaoAPI;
+		}
+		[BindProperty]
 		public bool UsuarioLogado { get; set; }
+
+		[BindProperty]
+		public Entity.API.LoginResponse DadosLogin { get; set; }
 
 		[BindProperty]
 		public Logar EfetuarLogin { get; set; }
@@ -24,28 +34,22 @@ namespace LTM.View.Pages
 
 		public List<Produto> produtos { get; set; }
 
+		[BindProperty]
+		public Entity.API.ProdutoAdicionar CadastrarProduto { get; set; }
+
 
 		public void OnGet()
 		{
-			UsuarioLogado = false;
-			produtos = new List<Produto>();
 		}
-
 
 		public async Task<IActionResult> OnPostLoginAsync()
 		{
-
-			var uriCategorias = "http://localhost:8090/api/Produto/BuscarTodos";
-			using (WebClient webClient = new WebClient())
+			this.DadosLogin = _conexaoAPI.Login(new Entity.API.LoginRequest() { Login = EfetuarLogin.Login, Password = EfetuarLogin.Senha });
+			if (DadosLogin != null)
 			{
-				var listaProd = JsonConvert.DeserializeObject<List<LTM.Entity.API.Produto>>(webClient.DownloadString(uriCategorias));
-				this.produtos = new List<Produto>();
-				listaProd.ForEach(x => {
-					produtos.Add(new Produto() { Descricao = x.Descricao, Especificacao = x.Especificacoes, Nome = x.Nome, QuantidadeEstoque = x.ItensEstoque });
-				});
-
+				UsuarioLogado = true;
+				this.produtos = _conexaoAPI.ListarProdutos();
 			}
-
 			return Page();
 		}
 
@@ -56,7 +60,18 @@ namespace LTM.View.Pages
 				return Page();
 			}
 
-			return RedirectToPage("/Inicio");
+			_conexaoAPI.Cadastrar(this.EfetuarCadastro);
+
+			return Page();
+		}
+
+		public async Task<IActionResult> OnPostCadastrarProdutoAsync()
+		{
+			_conexaoAPI.CadastrarProduto(this.CadastrarProduto);
+			this.CadastrarProduto = new Entity.API.ProdutoAdicionar();
+
+			this.produtos = _conexaoAPI.ListarProdutos();
+			return Page();
 		}
 	}
 }
