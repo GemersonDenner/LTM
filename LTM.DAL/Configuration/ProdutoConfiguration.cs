@@ -13,11 +13,11 @@ namespace LTM.DAL.Configuration
 		{
 			builder.ToTable("tb_produto");
 			builder.HasKey(x => x.Id);
-			builder.Property(x => x.Id).HasField("pro_idt_produto");
-			builder.Property(x => x.Nome).HasField("pro_des_nome");
-			builder.Property(x => x.Descricao).HasField("pro_des_descricao");
-			builder.Property(x => x.Especificacoes).HasField("pro_des_especificacoes");
-			builder.Property(x => x.ItensEstoque).HasField("pro_num_itens_estoque");
+			builder.Property(x => x.Id).HasColumnName("pro_idt_produto");
+			builder.Property(x => x.Nome).HasColumnName("pro_des_nome");
+			builder.Property(x => x.Descricao).HasColumnName("pro_des_descricao");
+			builder.Property(x => x.Especificacoes).HasColumnName("pro_des_especificacoes");
+			builder.Property(x => x.ItensEstoque).HasColumnName("pro_num_itens_estoque");
 		}
 	}
 }

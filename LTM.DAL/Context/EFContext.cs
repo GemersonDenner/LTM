@@ -12,7 +12,6 @@ namespace LTM.DAL.Context
 		public EFContext(DbContextOptions<EFContext> options)
 			: base(options)
 		{
-
 		}
 
 		public DbSet<Usuario> Usuario { get; set; }

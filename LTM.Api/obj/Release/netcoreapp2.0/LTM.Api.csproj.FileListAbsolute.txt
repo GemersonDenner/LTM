@@ -15,3 +15,5 @@ C:\Users\Denner\Documents\GitHub\LTM\LTM.Api\obj\Release\netcoreapp2.0\LTM.Api.A
 C:\Users\Denner\Documents\GitHub\LTM\LTM.Api\obj\Release\netcoreapp2.0\LTM.Api.AssemblyInfo.cs
 C:\Users\Denner\Documents\GitHub\LTM\LTM.Api\obj\Release\netcoreapp2.0\LTM.Api.dll
 C:\Users\Denner\Documents\GitHub\LTM\LTM.Api\obj\Release\netcoreapp2.0\LTM.Api.pdb
+C:\Users\Denner\Documents\GitHub\LTM\LTM.Api\bin\Release\netcoreapp2.0\LTM.JWT.dll
+C:\Users\Denner\Documents\GitHub\LTM\LTM.Api\bin\Release\netcoreapp2.0\LTM.JWT.pdb

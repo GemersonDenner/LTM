@@ -27,7 +27,9 @@
           "LTM.DAL": "1.0.0",
           "LTM.Entity.API": "1.0.0",
           "LTM.Entity.DAL": "1.0.0",
+          "LTM.JWT": "1.0.0",
           "Microsoft.AspNetCore.All": "2.0.0",
+          "Microsoft.AspNetCore.Authentication.JwtBearer": "2.0.0",
           "Microsoft.NETCore.App": "2.0.0",
           "Microsoft.VisualStudio.Web.CodeGeneration.Design": "2.0.0",
           "Swashbuckle.AspNetCore": "1.0.0"
@@ -4306,6 +4308,17 @@
           "LTM.Entity.DAL.dll": {}
         }
       },
+      "LTM.JWT/1.0.0": {
+        "dependencies": {
+          "Microsoft.AspNetCore.Authentication.JwtBearer": "2.0.0"
+        },
+        "runtime": {
+          "LTM.JWT.dll": {}
+        },
+        "compile": {
+          "LTM.JWT.dll": {}
+        }
+      },
       "Microsoft.NETCore.App/2.0.0": {
         "dependencies": {
           "Microsoft.NETCore.DotNetHostPolicy": "2.0.0",
@@ -6880,6 +6893,11 @@
       "sha512": ""
     },
     "LTM.Entity.DAL/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "LTM.JWT/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using LTM.Entity.DAL;
 using AutoMapper;
 using LTM.DAL.Repository;
+using Microsoft.AspNetCore.Authorization;
 
 namespace LTM.Api.Controllers
 {
@@ -24,6 +25,7 @@ namespace LTM.Api.Controllers
 			_mapper = mapper;
 		}
 
+		[Authorize]
 		[HttpGet("BuscarTodos/")]
 		public IEnumerable<Entity.API.Produto> BuscarTodos()
 		{
@@ -31,6 +33,7 @@ namespace LTM.Api.Controllers
 			return _mapper.Map<IEnumerable<Entity.API.Produto>>(produtos);
 		}
 
+		[Authorize(Roles = "USUARIO")]
 		[HttpGet("BuscarTodos/{idProduto}")]
 		public Entity.API.Produto Buscar(Guid idProduto)
 		{
@@ -38,18 +41,22 @@ namespace LTM.Api.Controllers
 			return _mapper.Map<Entity.API.Produto>(produto);
 		}
 
+		[Authorize(Roles = "USUARIO")]
 		[HttpDelete("Deletar/{idProduto}")]
 		public void Deletar(Guid idProduto)
 		{
 			_ProdutoRepository.Deletar(idProduto);
 		}
 
+		[Authorize(Roles = "USUARIO")]
 		[HttpPost("Atualizar/")]
 		public void Atualizar([FromBody]Entity.API.Produto produto)
 		{
 			var prodDal = _mapper.Map<Entity.DAL.Produto>(produto);
 			_ProdutoRepository.Atualizar(prodDal);
 		}
+
+		[Authorize(Roles = "USUARIO")]
 		[HttpPost("Cadastrar/")]
 		public void Cadastrar([FromBody]Entity.API.ProdutoAdicionar produto)
 		{

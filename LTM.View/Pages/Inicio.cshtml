@@ -2,15 +2,19 @@
 @model InicioModel
 @{
 }
+
 <script type="text/javascript">
 	function ShowLogin() {
 		$("#frmLogin").show();
 		HiddenCadastrar();
+		$("#mainMsgErro").hide();
 	}
 
 	function ShowCadastrar() {
 		$("#frmCadastrar").show();
 		HiddenLogin();
+		mainMsgErro
+		$("#mainMsgErro").hide();
 	}
 
 	function HiddenLogin() {
@@ -54,6 +58,15 @@
 		</div>
 	}
 </nav>
+
+@if (!string.IsNullOrEmpty(Model.MensagemErro))
+{
+	<main role="main" id="mainMsgErro" class="container">
+		<section class="jumbotron text-center">
+			<h2>@Model.MensagemErro</h2>
+		</section>
+	</main>
+}
 
 <main role="main" class="container">
 	<form id="frmLogin" style="display:none" method="post">

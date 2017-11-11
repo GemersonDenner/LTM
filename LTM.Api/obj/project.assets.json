@@ -5302,6 +5302,19 @@
         "runtime": {
           "bin/placeholder/LTM.Entity.DAL.dll": {}
         }
+      },
+      "LTM.JWT/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v2.0",
+        "dependencies": {
+          "Microsoft.AspNetCore.Authentication.JwtBearer": "2.0.0"
+        },
+        "compile": {
+          "bin/placeholder/LTM.JWT.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/LTM.JWT.dll": {}
+        }
       }
     }
   },
@@ -13633,6 +13646,11 @@
       "type": "project",
       "path": "../LTM.Entity.DAL/LTM.Entity.DAL.csproj",
       "msbuildProject": "../LTM.Entity.DAL/LTM.Entity.DAL.csproj"
+    },
+    "LTM.JWT/1.0.0": {
+      "type": "project",
+      "path": "../LTM.JWT/LTM.JWT.csproj",
+      "msbuildProject": "../LTM.JWT/LTM.JWT.csproj"
     }
   },
   "projectFileDependencyGroups": {
@@ -13641,7 +13659,9 @@
       "LTM.DAL >= 1.0.0",
       "LTM.Entity.API >= 1.0.0",
       "LTM.Entity.DAL >= 1.0.0",
+      "LTM.JWT >= 1.0.0",
       "Microsoft.AspNetCore.All >= 2.0.0",
+      "Microsoft.AspNetCore.Authentication.JwtBearer >= 2.0.0",
       "Microsoft.NETCore.App >= 2.0.0",
       "Microsoft.VisualStudio.Web.CodeGeneration.Design >= 2.0.0",
       "Swashbuckle.AspNetCore >= 1.0.0"
@@ -13680,6 +13700,9 @@
       "frameworks": {
         "netcoreapp2.0": {
           "projectReferences": {
+            "C:\\Users\\Denner\\Documents\\GitHub\\LTM\\LTM.JWT\\LTM.JWT.csproj": {
+              "projectPath": "C:\\Users\\Denner\\Documents\\GitHub\\LTM\\LTM.JWT\\LTM.JWT.csproj"
+            },
             "C:\\Users\\Denner\\Documents\\GitHub\\LTM\\LTM.DAL\\LTM.DAL.csproj": {
               "projectPath": "C:\\Users\\Denner\\Documents\\GitHub\\LTM\\LTM.DAL\\LTM.DAL.csproj"
             },
@@ -13709,6 +13732,10 @@
             "target": "Package",
             "version": "2.0.0",
             "autoReferenced": true
+          },
+          "Microsoft.AspNetCore.Authentication.JwtBearer": {
+            "target": "Package",
+            "version": "2.0.0"
           },
           "Swashbuckle.AspNetCore": {
             "target": "Package",

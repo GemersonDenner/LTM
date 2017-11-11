@@ -23,6 +23,8 @@ namespace LTM.View.Pages
 		[BindProperty]
 		public bool UsuarioLogado { get; set; }
 
+		public string MensagemErro { get; set; }
+
 		[BindProperty]
 		public Entity.API.LoginResponse DadosLogin { get; set; }
 
@@ -48,7 +50,7 @@ namespace LTM.View.Pages
 			if (DadosLogin != null)
 			{
 				UsuarioLogado = true;
-				this.produtos = _conexaoAPI.ListarProdutos();
+				this.produtos = _conexaoAPI.ListarProdutos(this.DadosLogin.ChaveJwt);
 			}
 			return Page();
 		}
@@ -60,18 +62,54 @@ namespace LTM.View.Pages
 				return Page();
 			}
 
-			_conexaoAPI.Cadastrar(this.EfetuarCadastro);
+			try
+			{
+				_conexaoAPI.Cadastrar(this.EfetuarCadastro, this.DadosLogin.ChaveJwt);
+			}
+			catch (WebException ex)
+			{
+				if (((HttpWebResponse)ex.Response).StatusCode == HttpStatusCode.Unauthorized)
+					Erro("Ocorreu um erro de acesso, favor efetue login novamente");
+				else
+					Erro(ex.Message, true);
+			}
+			catch (Exception ex)
+			{
+				Erro(ex.Message, true);
+			}
 
 			return Page();
 		}
 
 		public async Task<IActionResult> OnPostCadastrarProdutoAsync()
 		{
-			_conexaoAPI.CadastrarProduto(this.CadastrarProduto);
-			this.CadastrarProduto = new Entity.API.ProdutoAdicionar();
+			try
+			{
+				_conexaoAPI.CadastrarProduto(this.CadastrarProduto, this.DadosLogin.ChaveJwt);
+				this.CadastrarProduto = new Entity.API.ProdutoAdicionar();
 
-			this.produtos = _conexaoAPI.ListarProdutos();
+				this.produtos = _conexaoAPI.ListarProdutos(this.DadosLogin.ChaveJwt);
+			}
+			catch (WebException ex)
+			{
+				if (((HttpWebResponse)ex.Response).StatusCode == HttpStatusCode.Unauthorized)
+					Erro("Ocorreu um erro de acesso, favor efetue login novamente");
+				else
+					Erro(ex.Message, true);
+			}
+			catch (Exception ex)
+			{
+				Erro(ex.Message, true);
+			}
 			return Page();
+		}
+
+		private void Erro(string erro, bool foiErroAcesso = false)
+		{
+			DadosLogin = new Entity.API.LoginResponse();
+			UsuarioLogado = false;
+			produtos = new List<Produto>();
+			MensagemErro = erro;
 		}
 	}
 }

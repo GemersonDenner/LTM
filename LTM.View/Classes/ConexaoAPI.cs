@@ -27,7 +27,7 @@ namespace LTM.View.Classes
 			}
 		}
 
-		public void Cadastrar(Classes.Cadastrar cadastrar)
+		public void Cadastrar(Classes.Cadastrar cadastrar, string jwtKey)
 		{
 			var uri = $"{enderecoBaseAPI}/Usuario/Cadastrar";
 
@@ -42,37 +42,56 @@ namespace LTM.View.Classes
 			var client = new HttpClient();
 			client.DefaultRequestHeaders.Accept.Clear();
 			client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+			client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", jwtKey);
 			var myContent = JsonConvert.SerializeObject(cadastrarAPI);
 			var content = new StringContent(myContent, Encoding.UTF8, "application/json");
 			var result = client.PostAsync(uri, content).Result;
 		}
 
-		public List<Produto> ListarProdutos()
+		public List<Produto> ListarProdutos(string jwtKey)
 		{
 			var uri = $"{enderecoBaseAPI}/Produto/BuscarTodos";
 			var produtos = new List<Produto>();
-			using (WebClient webClient = new WebClient())
+			try
 			{
-				var listaProd = JsonConvert.DeserializeObject<List<LTM.Entity.API.Produto>>(webClient.DownloadString(uri));
-				listaProd.ForEach(x =>
+				using (WebClient webClient = new WebClient())
 				{
-					produtos.Add(new Produto() { Descricao = x.Descricao, Especificacao = x.Especificacoes, Nome = x.Nome, QuantidadeEstoque = x.ItensEstoque });
-				});
+					webClient.Headers.Add("content-type", "application/json");
+					webClient.Headers.Add("Authorization", "bearer " + jwtKey);
+					var result = webClient.DownloadString(uri);
+					var listaProd = JsonConvert.DeserializeObject<List<LTM.Entity.API.Produto>>(webClient.DownloadString(uri));
+					listaProd.ForEach(x =>
+					{
+						produtos.Add(new Produto() { Descricao = x.Descricao, Especificacao = x.Especificacoes, Nome = x.Nome, QuantidadeEstoque = x.ItensEstoque });
+					});
 
+				}
+			}
+			catch (Exception ex)
+			{
+				throw ex;
 			}
 			return produtos;
 		}
 
-		public void CadastrarProduto(Entity.API.ProdutoAdicionar cadastrar)
+		public void CadastrarProduto(Entity.API.ProdutoAdicionar cadastrar, string jwtKey)
 		{
-			var uri = $"{enderecoBaseAPI}/Produto/Cadastrar";
+			try
+			{
+				var uri = $"{enderecoBaseAPI}/Produto/Cadastrar";
 
-			var client = new HttpClient();
-			client.DefaultRequestHeaders.Accept.Clear();
-			client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-			var myContent = JsonConvert.SerializeObject(cadastrar);
-			var content = new StringContent(myContent, Encoding.UTF8, "application/json");
-			var result = client.PostAsync(uri, content).Result;
+				var client = new HttpClient();
+				client.DefaultRequestHeaders.Accept.Clear();
+				client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+				client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", jwtKey);
+				var myContent = JsonConvert.SerializeObject(cadastrar);
+				var content = new StringContent(myContent, Encoding.UTF8, "application/json");
+				var result = client.PostAsync(uri, content).Result;
+			}
+			catch(Exception ex)
+			{
+				throw ex;
+			}
 		}
 	}
 }
